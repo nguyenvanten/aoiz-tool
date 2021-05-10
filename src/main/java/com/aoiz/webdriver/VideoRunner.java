@@ -30,7 +30,10 @@ public class VideoRunner {
 		emailText.sendKeys("tenitbinance@gmail.com");
 
 		WebElement passwordText = getWebElement(driver, new ById("password"));
-		passwordText.sendKeys("Texx#321");
+
+		byte[] decodedBytes = Base64.getDecoder().decode("VGV4eCMzMjE=");
+		String decodedString = new String(decodedBytes);
+		passwordText.sendKeys(decodedString);
 
 		WebElement continueButton = getWebElement(driver,
 				new ByXPath("/html/body/div[4]/div/div/div/div/form/div[4]/button"));

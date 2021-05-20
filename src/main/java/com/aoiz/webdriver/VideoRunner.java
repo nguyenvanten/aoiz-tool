@@ -1,6 +1,7 @@
 package com.aoiz.webdriver;
 
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -17,14 +18,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class VideoRunner {
 	public static void runVideo(WebDriver driver, int index) throws InterruptedException {
-		Thread.sleep(1000);
+		Thread.sleep(500);
 		WebElement acceptButton = getWebElement(driver, new ByXPath("/html/body/div[3]/div/div/div/button"));
 		acceptButton.click();
-		Thread.sleep(1000);
+		Thread.sleep(500);
 
 		WebElement loginButton = getWebElement(driver, new ByXPath("//*/div[3]/div/header/div[2]/div[1]/button[1]"));
 		loginButton.click();
-		Thread.sleep(1000);
+		Thread.sleep(500);
 
 		WebElement emailText = getWebElement(driver, new ById("email"));
 		emailText.sendKeys("tenitbinance@gmail.com");
@@ -39,7 +40,7 @@ public class VideoRunner {
 				new ByXPath("/html/body/div[4]/div/div/div/div/form/div[4]/button"));
 		continueButton.click();
 		List<WebElement> elements = getListElementMenu(driver, new ByClassName("aioz-sidebar-item"));
-		Thread.sleep(10000);
+		Thread.sleep(5000);
 		elements.get(index).click();
 		Thread.sleep(3000);
 		List<WebElement> elementAlinks = getListElementMenu(driver, new ByClassName("video-box-img-wrapper"));
@@ -73,7 +74,7 @@ public class VideoRunner {
 		String tabName = tabs.get(1);
 		driver.switchTo().window(tabName);
 		System.out.println("Switch to next tab");
-		Thread.sleep(5000);
+		Thread.sleep(3000);
 		WebElement videoSelector = getWebElement(driver, new ById("player_html5_api"));
 		System.out.println("Find video element");
 		Thread.sleep(3000);
@@ -107,7 +108,7 @@ public class VideoRunner {
 		}
 	}
 
-	private static WebElement getWebElement(WebDriver driver, By by) {
+	public static WebElement getWebElement(WebDriver driver, By by) {
 		int maxRetry = 100;
 		int index = 0;
 		while (index < maxRetry) {

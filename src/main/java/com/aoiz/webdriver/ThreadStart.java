@@ -14,7 +14,7 @@ public class ThreadStart extends Thread {
 
 	@Override
 	public void run() {
-		System.setProperty("webdriver.chrome.driver", String.format("E:\\TenNguyen\\chromedriver%d.exe", index));
+		System.setProperty("webdriver.chrome.driver", "E:\\tool\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);

@@ -1,13 +1,22 @@
 package com.aoiz.model;
 
+import com.poiji.annotation.ExcelCellName;
+
 public class EpicModel {
+	@ExcelCellName("email")
 	private String email;
-	private String key;
+
+	@ExcelCellName("keyNode")
+	private String keyNode;
+
+	public EpicModel() {
+	}
 
 	public EpicModel(String email, String key) {
 		this.email = email;
-		this.key = key;
+		this.keyNode = key;
 	}
+
 	public EpicModel(String email) {
 		this.email = email;
 	}
@@ -21,11 +30,11 @@ public class EpicModel {
 	}
 
 	public String getKey() {
-		return key;
+		return keyNode;
 	}
 
 	public void setKey(String key) {
-		this.key = key;
+		this.keyNode = key;
 	}
 
 }

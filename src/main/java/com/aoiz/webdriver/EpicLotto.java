@@ -1,67 +1,22 @@
 package com.aoiz.webdriver;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
+import java.io.File;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.lang3.RandomStringUtils;
+import org.openqa.selenium.By.ById;
+import org.openqa.selenium.By.ByXPath;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.By.ById;
-import org.openqa.selenium.By.ByXPath;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.aoiz.model.EpicModel;
+import com.poiji.bind.Poiji;
 
 public class EpicLotto {
 	private static List<EpicModel> getMapModel() {
-		List<EpicModel> result = new ArrayList<>(Arrays.asList(
-				
-//				new EpicModel("ten_relictum2021_1@outlook.com.vn"), 
-//				new EpicModel("nam_relictum2021_1@outlook.com.vn"), 
-//				new EpicModel("nam_relictum2021_2@outlook.com.vn"), 
-//				new EpicModel("nam_3relictum2021_3@outlook.com.vn"),
-//				new EpicModel("nam_4relictum2021_4@outlook.com.vn"),
-//				new EpicModel("nam_5relictum2021_5@outlook.com.vn"), 
-//				new EpicModel("nam_6relictum2021_6@outlook.com.vn"), 
-//				new EpicModel("ads1sutlook.com@outlook.com"),
-//				new EpicModel("minadnamtrannguyen@outlook.com"), 
-//				new EpicModel("help1s@outlook.com"),
-//				new EpicModel("tkwebgiare.com1s@outlook.com"), 
-//				new EpicModel("banthansv921s@outlook.com"),
-//				new EpicModel("tuanmbland1s@outlook.com"), 
-//				new EpicModel("nguyentienkhoi3811s@outlook.com"),
-//				new EpicModel("batdongsangiatot.com.vn1s@outlook.com"),
-//				new EpicModel("thienduong.massage.spa1s@outlook.com"), 
-//				new EpicModel("qualitybacklink4u1s@outlook.com"),
-//				new EpicModel("tuanlaptopqn1s@outlook.com"), 
-//				new EpicModel("newsky02061s@outlook.com"),
-//				new EpicModel("hotcongnghe1s@outlook.com"), 
-//				new EpicModel("qcgame2004pc1s@outlook.com")));
-				new EpicModel("isqz2kuqbs4h@opayq.com"),
-				new EpicModel("3lz0d9vn84w7@opayq.com"),
-				new EpicModel("a4dofsv1dlop@opayq.com"),
-				new EpicModel("4ix7upu9w2xy@opayq.com"),
-				new EpicModel("y7tik0f3paq2@opayq.com"),
-				new EpicModel("saolasao@opayq.com"),
-				new EpicModel("iqli5xjsjxa4@opayq.com"),
-				new EpicModel("7ct5hmqzy7ul@opayq.com"),
-				new EpicModel("brjscja7zvnz@opayq.com"),
-				new EpicModel("8zgifwcxfy2d@opayq.com"),
-				new EpicModel("v3rd0cviml96@opayq.com"),
-				new EpicModel("xmo48w4yv9m@opayq.com"),
-				new EpicModel("oatq7ae39vog@opayq.com"),
-				new EpicModel("hq8qp544atha@opayq.com"),
-				new EpicModel("mscqk53725jk@opayq.com"),
-				new EpicModel("8rul7b6lpwyq@opayq.com"),
-				new EpicModel("l5p52ylopi4q@opayq.com"),
-				new EpicModel("shj414bakrgp@opayq.com"),
-				new EpicModel("96d4xc28u81s@opayq.com"),
-				new EpicModel("q5ye0pigl9k9@opayq.com")));
+		List<EpicModel> result = Poiji.fromExcel(new File("E:\\TenNguyen\\learn\\Relictum account.xlsx"), EpicModel.class);
 		return result;
 	}
 

@@ -6,15 +6,18 @@ public class EpicModel {
 	@ExcelCellName("email")
 	private String email;
 
+	@ExcelCellName("Pass")
+	private String pass;
+
 	@ExcelCellName("keyNode")
 	private String keyNode;
 
 	public EpicModel() {
 	}
 
-	public EpicModel(String email, String key) {
+	public EpicModel(String email, String keyNode) {
 		this.email = email;
-		this.keyNode = key;
+		this.keyNode = keyNode;
 	}
 
 	public EpicModel(String email) {
@@ -29,12 +32,20 @@ public class EpicModel {
 		this.email = email;
 	}
 
-	public String getKey() {
+	public String getPass() {
+		return pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+
+	public String getKeyNode() {
 		return keyNode;
 	}
 
-	public void setKey(String key) {
-		this.keyNode = key;
+	public void setKeyNode(String keyNode) {
+		this.keyNode = keyNode;
 	}
 
 }

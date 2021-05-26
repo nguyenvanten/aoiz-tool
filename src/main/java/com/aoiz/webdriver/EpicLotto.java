@@ -28,12 +28,15 @@ public class EpicLotto extends Thread {
 	@Override
 	public void run() {
 		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
 		String url = "https://epiclotto.io/usercenter/user/sign-in/login";
 		FileWriter myWriter = null;
 		try {
 			myWriter = new FileWriter("epicloto" + index + ".txt");
 			for (EpicModel model : epicModels) {
-				WebDriver driver = new ChromeDriver();
+				System.out.println("Run data for ========================== " + model.getEmail());
 				String time = DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss");
 				myWriter.write(model.getIndex());
 				myWriter.write("\t");
@@ -41,8 +44,7 @@ public class EpicLotto extends Thread {
 				myWriter.write("\t");
 				myWriter.write(model.getEmail());
 				myWriter.write("\n");
-				driver.manage().window().maximize();
-				driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+				Thread.sleep(2000);
 				driver.get(url);
 				Thread.sleep(2000);
 				WebElement email = VideoRunner.getWebElement(driver, new ById("loginform-identity"));
@@ -75,8 +77,10 @@ public class EpicLotto extends Thread {
 						new ByXPath("//*[@id='buy-tickets']/div[1]/button"));
 				createTransaction.click();
 				Thread.sleep(3000);
-				driver.quit();
+//				driver.quit();
+				driver.get("https://epiclotto.io/usercenter/user/sign-in/logout");
 			}
+			driver.quit();
 		} catch (InterruptedException | IOException e) {
 			e.printStackTrace();
 		} finally {

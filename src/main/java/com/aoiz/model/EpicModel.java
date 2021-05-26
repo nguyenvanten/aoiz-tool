@@ -3,6 +3,9 @@ package com.aoiz.model;
 import com.poiji.annotation.ExcelCellName;
 
 public class EpicModel {
+	@ExcelCellName("STT")
+	private String index;
+	
 	@ExcelCellName("email")
 	private String email;
 
@@ -12,16 +15,12 @@ public class EpicModel {
 	@ExcelCellName("keyNode")
 	private String keyNode;
 
-	public EpicModel() {
+	public String getIndex() {
+		return index;
 	}
 
-	public EpicModel(String email, String keyNode) {
-		this.email = email;
-		this.keyNode = keyNode;
-	}
-
-	public EpicModel(String email) {
-		this.email = email;
+	public void setIndex(String index) {
+		this.index = index;
 	}
 
 	public String getEmail() {

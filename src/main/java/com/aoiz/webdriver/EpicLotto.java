@@ -31,11 +31,14 @@ public class EpicLotto extends Thread {
 		String url = "https://epiclotto.io/usercenter/user/sign-in/login";
 		FileWriter myWriter = null;
 		try {
-			myWriter = new FileWriter("epicloto"+index+".txt");
+			myWriter = new FileWriter("epicloto" + index + ".txt");
 			for (EpicModel model : epicModels) {
 				WebDriver driver = new ChromeDriver();
 				String time = DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss");
+				myWriter.write(model.getIndex());
+				myWriter.write("\t");
 				myWriter.write(time);
+				myWriter.write("\t");
 				myWriter.write(model.getEmail());
 				myWriter.write("\n");
 				driver.manage().window().maximize();
@@ -76,7 +79,7 @@ public class EpicLotto extends Thread {
 			}
 		} catch (InterruptedException | IOException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
 				myWriter.close();
 			} catch (IOException e) {

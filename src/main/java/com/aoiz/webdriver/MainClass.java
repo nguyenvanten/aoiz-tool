@@ -31,7 +31,7 @@ public class MainClass {
 	}
 
 	private static List<EpicModel> getMapModel() {
-		List<EpicModel> result = Poiji.fromExcel(new File("Relictum account.xlsx"),
+		List<EpicModel> result = Poiji.fromExcel(new File("account.xlsx"),
 				EpicModel.class);
 		System.out.println(result.size());
 		return result;

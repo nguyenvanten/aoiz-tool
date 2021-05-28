@@ -33,7 +33,9 @@ public class EpicLotto extends Thread {
 		driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
 		String url = "https://epiclotto.io/usercenter/user/sign-in/login";
 		FileWriter myWriter = null;
+		FileWriter error = null;
 		try {
+			error = new FileWriter("notcreate" + index + ".txt");
 			myWriter = new FileWriter("epicloto" + index + ".txt");
 			for (EpicModel model : epicModels) {
 				System.out.println("Run data for ========================== " + model.getEmail());
@@ -52,14 +54,21 @@ public class EpicLotto extends Thread {
 				Thread.sleep(500);
 				WebElement pass = VideoRunner.getWebElement(driver, new ById("loginform-password"));
 				pass.sendKeys(model.getPass());
-				Thread.sleep(1000);
+				Thread.sleep(500);
 
 				WebElement btnLogin = VideoRunner.getWebElement(driver,
 						new ByXPath("//*[@id='login-form']/div[4]/button"));
 				btnLogin.click();
+				System.out.println("Login ============================");
 				Thread.sleep(10000);
+				if (driver.getPageSource().contains("Incorrect username or password")) {
+					error.write(model.getEmail());
+					error.write("\n");
+					continue;
+				}
+				
 				driver.get("https://epiclotto.io/usercenter/game/lotto-free");
-				Thread.sleep(10000);
+				Thread.sleep(5000);
 				JavascriptExecutor je = (JavascriptExecutor) driver;
 				WebElement random = VideoRunner.getWebElement(driver,
 						new ByXPath("//*[@id='choose']/div[1]/div/div[3]/div[2]/button[1]"));
@@ -86,6 +95,7 @@ public class EpicLotto extends Thread {
 		} finally {
 			try {
 				myWriter.close();
+				error.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

@@ -86,6 +86,12 @@ public class SMLTool {
 			WebElement moneyValue = VideoRunner.getWebElement(driver,
 					By.xpath("//*[@id='Limbo-control-0']/div[2]/div/div[1]/div[2]/input"));
 			Thread.sleep(500);
+			if (innitValue > 26.0) {
+				selectAll(moneyValue);
+				Thread.sleep(500);
+				resetMinimum(moneyValue);
+				return;
+			}
 			if (realValueDb > defaultValue) {
 				selectAll(moneyValue);
 				Thread.sleep(500);

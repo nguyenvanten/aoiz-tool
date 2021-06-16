@@ -52,15 +52,13 @@ public class SMLTool {
 				index = 0;
 			}
 			if (index >= 3) {
-				boolean result = getCoin(driver);
-				if(result) {
-					return;
-				}
+				getCoin(driver);
 				Thread.sleep(500);
 				index = 0;
 			}
 			WebElement betButton = VideoRunner.getWebElement(driver,
 					By.xpath("//*[@id='Limbo-control-0']/div[2]/div/button"));
+			Thread.sleep(500);
 			betButton.click();
 			Thread.sleep(500);
 		}
@@ -73,12 +71,12 @@ public class SMLTool {
 
 	private static void selectAll(WebElement element) throws InterruptedException {
 		String selectAll = Keys.chord(Keys.CONTROL, "a");
-		Thread.sleep(200);
+		Thread.sleep(500);
 		element.sendKeys(selectAll);
 	}
 
 	private static boolean getCoin(WebDriver driver) throws InterruptedException {
-		double maxValue = 27.00;
+		double maxValue = 57.00;
 		double innitValue = 0.0128;
 		double defaultValue = 2.80;
 		WebElement moneyValue = null;
@@ -91,15 +89,7 @@ public class SMLTool {
 			moneyValue = VideoRunner.getWebElement(driver,
 					By.xpath("//*[@id='Limbo-control-0']/div[2]/div/div[1]/div[2]/input"));
 			Thread.sleep(500);
-			if (innitValue > maxValue) {
-				System.out.println("Vao data innitValue > 27.0");
-				Thread.sleep(500);
-				selectAll(moneyValue);
-				Thread.sleep(500);
-				resetMinimum(moneyValue);
-				return true;
-			}
-			if (realValueDb > defaultValue) {
+			if (realValueDb >= defaultValue) {
 				System.out.println("realValueDb > defaultValue");
 				Thread.sleep(500);
 				selectAll(moneyValue);
@@ -107,14 +97,14 @@ public class SMLTool {
 				resetMinimum(moneyValue);
 				return false;
 			}
-			System.out.println("Value of moneyValue ================" + moneyValue.getText());
+			System.out.println("Value of moneyValue ================" + moneyValue.getAttribute("value"));
 			selectAll(moneyValue);
 			Thread.sleep(300);
 			moneyValue.sendKeys(innitValue + "");
 			System.out.println("Send innitValue is ================" + innitValue);
-			WebElement betButton = VideoRunner.getWebElement(driver,
-					By.xpath("//*[@id='Limbo-control-0']/div[2]/div/button"));
-			Thread.sleep(300);
+			Thread.sleep(500);
+			WebElement betButton = VideoRunner.getWebElement(driver,By.xpath("//*[@id='Limbo-control-0']/div[2]/div/button"));
+			Thread.sleep(500);
 			betButton.click();
 			Thread.sleep(500);
 			innitValue = innitValue * 2;
